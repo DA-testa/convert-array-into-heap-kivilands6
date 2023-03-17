@@ -3,8 +3,10 @@
 
 
 def build_heap(data):
+
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
+    
     n = len(data)
     swaps = []
 
@@ -17,11 +19,12 @@ def build_heap(data):
         data[child], data[parent] = data[parent], data[child]
 
     def HeapUp(m):
+        parent = (m-1)//2
         if m == 0:
             return
-        if data[m] < data[(m-1)//2]:
-            swap(m, (m-1)//2)
-            HeapUp((m-1)//2)
+        if data[m] < data[parent]:
+            swap(m, parent)
+            HeapUp(parent)
 
     for i in range(n-1, -1, -1):
         HeapUp(i)
@@ -82,5 +85,5 @@ def main():
         for i, j in swaps:
             print(i, j)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
